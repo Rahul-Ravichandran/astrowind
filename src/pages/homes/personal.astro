@@ -12,7 +12,9 @@ import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import { getPermalink } from '~/utils/permalinks';
 
 const metadata = {
-  title: 'Personal Homepage Demo',
+  title: 'Rahul Ravichandran — Robotics Engineer',
+  description:
+    'Robotics Engineer with 6+ years of experience in building reliable robotic and IoT systems. Specialized in autonomy, perception, and industrial integration.',
 };
 ---
 
@@ -24,18 +26,23 @@ const metadata = {
         { text: 'Home', href: '#' },
         { text: 'About', href: '#about' },
         { text: 'Resume', href: '#resume' },
-        { text: 'Porfolio', href: '#porfolio' },
-        { text: 'Blog', href: '#blog' },
-        { text: 'Github', href: 'https://github.com/arthelokyo' },
+        { text: 'Portfolio', href: '#porfolio' },
+        { text: 'GitHub', href: 'https://github.com/Rahul-Ravichandran' },
       ]}
       actions={[
         {
-          text: 'Hire me',
-          href: '#',
+          text: 'Contact me',
+          href: getPermalink('/contact#form'),
+        },
+        {
+          text: 'LinkedIn',
+          href: 'https://www.linkedin.com/in/rahul-ravichandran-b89363129/',
+          target: '_blank',
         },
       ]}
       isSticky
       showToggleTheme
+      showLogo={false}
     />
   </Fragment>
 
@@ -43,50 +50,30 @@ const metadata = {
 
   <Hero
     id="hero"
-    title="Sarah Johnson"
-    tagline="Personal Web Demo"
-    actions={[{ variant: 'primary', text: 'Hire me', href: getPermalink('/contact#form') }]}
+    title="Rahul Ravichandran"
+    tagline="Robotics Engineer"
+    actions={[
+      { variant: 'primary', text: 'Contact me', href: getPermalink('/contact#form') },
+      {
+        variant: 'secondary',
+        text: 'View LinkedIn',
+        href: 'https://www.linkedin.com/in/rahul-ravichandran-b89363129/',
+        target: '_blank',
+      },
+    ]}
   >
     <Fragment slot="subtitle">
-      I'm a Graphic Designer passionate about crafting visual stories. <br /> With 5 years of experience and a degree from
-      New York University's School of Design. I infuse vitality into brands and designs, transforming concepts into captivating
-      realities.
+      Robotics Engineer focused on building reliable robotic and IoT systems. With 6+ years of experience and an M.Sc.
+      in Robotics from Aalborg University, I design, build and integrate solutions from prototype to production.
     </Fragment>
   </Hero>
-
-  <!-- Content Widget **************** -->
 
   <Content
     id="about"
     columns={3}
-    items={[
-      {
-        icon: 'tabler:brand-dribbble',
-        callToAction: {
-          target: '_blank',
-          text: 'Dribbble',
-          href: '#',
-        },
-      },
-      {
-        icon: 'tabler:brand-behance',
-        callToAction: {
-          target: '_blank',
-          text: 'Behance',
-          href: '#',
-        },
-      },
-      {
-        icon: 'tabler:brand-pinterest',
-        callToAction: {
-          target: '_blank',
-          text: 'Pinterest',
-          href: '#',
-        },
-      },
-    ]}
+    items={[]}
     image={{
-      src: 'https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+      src: '~/assets/images/personal_photo.jpg',
       alt: 'Colorful Image',
       loading: 'eager',
     }}
@@ -94,16 +81,18 @@ const metadata = {
     <Fragment slot="content">
       <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">About me</h2>
       <p>
-        Welcome to my creative journey. My work is a testament to my commitment to bringing ideas to life, where each
-        pixel becomes a brushstroke in the canvas of imagination.
+        Welcome — I'm Rahul Ravichandran, a Robotics Engineer building real-world robotic and embedded systems. I focus
+        on autonomy, perception, and industrial integration, and I enjoy taking projects from research and prototype
+        stage into reliable, maintainable deployments.
       </p>
       <br />
       <p>
-        I find inspiration in the world around me, whether through the pages of a captivating novel, the intricate
-        details of typography, or the vibrant hues of nature during my outdoor escapades.
+        I find inspiration in how robotics can improve efficiency and safety across domains. My work combines software,
+        hardware, and systems engineering to deliver solutions that are robust and maintainable. I enjoy collaborating
+        with cross-functional teams to move ideas into production.
       </p>
       <br />
-      <p>If you're curious to dive deeper into my work, you can follow me:</p>
+      <p>If you'd like to explore my work, see the portfolio section below or get in touch via the contact page.</p>
     </Fragment>
 
     <Fragment slot="bg">
@@ -119,81 +108,202 @@ const metadata = {
     items={[
       {
         title:
-          'Graphic Designer <br /> <span class="font-normal">ABC Design Studio, New York, NY</span> <br /> <span class="text-sm font-normal">2021 - Present</span>',
-        description: `Collaborate with clients to understand design requirements and objectives. <br /> Develop branding solutions, including logos, color palettes, and brand guidelines. <br /> Design marketing materials such as brochures, posters, and digital assets. <br /> Create visually appealing user interfaces for websites and applications.`,
+          'Robotics Engineer <br /> <span class="font-normal">NovoNordisk, Kalundborg, Denmark</span> <br /> <span class="text-sm font-normal">2024 - Present</span>',
+        description: `Provide automation solutions and manage factory automation of producing Active Pharmaceutical Ingredients(API) products. <br /> In addition, I also manage team schedules, timelines and progress.`,
         icon: 'tabler:briefcase',
       },
       {
         title:
-          'Junior Graphic Designer <br /> <span class="font-normal">XYZ Creative Agency, Los Angeles, CA</span> <br /> <span class="text-sm font-normal">2018 - 2021</span>',
-        description: `Assisted senior designers in creating design concepts and visual assets. <br /> Contributed to the development of brand identities and marketing collateral. <br /> Collaborated with the marketing team to ensure consistent design across campaigns. <br /> Gained hands-on experience in various design software and tools.`,
+          'Robotics Engineer <br /> <span class="font-normal">TurfTank, Svenstrup, Denmark</span> <br /> <span class="text-sm font-normal">2021 - 2024</span>',
+        description: `I was responsible for integrating software solutions as a snap into a secure Ubuntu Core OS for deployment . <br /> In addition I also helped develop robot functionalities and optimize CI/CD workflows for testing and deployment through bitbucket and azure pipelines and docker. <br /> `,
+        icon: 'tabler:briefcase',
+      },
+      {
+        title:
+          'Project Assistant <br /> <span class="font-normal">Aalborg University, Aalborg, Denmark</span> <br /> <span class="text-sm font-normal">2019 - 2020</span>',
+        description: `I was tasked with building a drone from the ground up to run a custom muticore processor for managing stabilzation and navigation. <br /> This was in collaboration with DTU which utilized my 3d modelling, PCB designing and C programming skill sets. <br /> `,
+        icon: 'tabler:briefcase',
+      },
+      {
+        title:
+          'Project Assistant <br /> <span class="font-normal">Indian Institute of Technology, Bangalore, India</span> <br /> <span class="text-sm font-normal">2018 - 2019</span>',
+        description: `I was undertaking serveral interesting project during my time here which were moslty on ROS gazebo drone simulation and path planning, Swarm navigation and search, Probabilistic drone search patterns. <br />  I also had the chance to participate in an international drone called MBZIRC. <br /> `,
         icon: 'tabler:briefcase',
       },
     ]}
-    classes={{ container: 'max-w-3xl' }}
+    classes={{ container: 'max-w-4xl' }}
   />
 
   <!-- Steps Widget ****************** -->
 
   <Steps
-    id="resume"
+    id="education"
     title="Education"
     items={[
       {
-        title: `Master of Fine Arts in Graphic Design <br /> <span class="font-normal">New York University's School of Design</span> <br /> <span class="text-sm font-normal">2018 - 2020</span>`,
+        title: `Master Science in Robotics <br /> <span class="font-normal">Aalborg university, Aalborg</span> <br /> <span class="text-sm font-normal">2019 - 2021</span>`,
         icon: 'tabler:school',
       },
       {
-        title: `Bachelor of Arts in Graphic Design <br /> <span class="font-normal">New York University's School of Design</span> <br /> <span class="text-sm font-normal">2014 - 2018</span>`,
+        title: `Bachelor of Technology in Electrical Engineering <br /> <span class="font-normal">Malaviya National institute of Technology, Jaipur</span> <br /> <span class="text-sm font-normal">2014 - 2018</span>`,
         icon: 'tabler:school',
       },
     ]}
-    classes={{ container: 'max-w-3xl' }}
+    classes={{ container: 'max-w-4xl' }}
   />
 
   <!-- Features3 Widget ************** -->
 
   <Features3
     title="Skills"
-    subtitle="Discover the proficiencies that allow me to bring imagination to life through design."
-    columns={3}
+    subtitle="Technical proficiencies and expertise in robotics, software development, and systems engineering."
+    columns={4}
     defaultIcon="tabler:point-filled"
     items={[
       {
-        title: 'Graphic design',
-        description: 'Proficient in crafting visually appealing designs that convey messages effectively.',
+        title: 'ROS2',
+        description: 'Experience building ROS2 packages, nodes and launch systems for robot control and data flow.',
       },
       {
-        title: 'Branding and identity',
-        description: 'Skilled at developing cohesive brand identities, including logos and brand guidelines.',
+        title: 'C++ Programming',
+        description: 'Extensive experience writing real-time and performance-critical C++ for robotics applications.',
       },
       {
-        title: 'User-centered design',
-        description: 'Experienced in creating user-friendly interfaces and optimizing user experiences.',
+        title: 'CI/CD',
+        description:
+          'Designing and implementing Continuous Integration and Continuous Deployment pipelines for automated testing, building, and deployment workflows.',
       },
       {
-        title: 'Adobe Creative Suite',
-        description: 'Skilled in using Photoshop, Illustrator, and InDesign to create and edit visual elements.',
+        title: 'Snapcraft',
+        description: 'Packaging and deploying applications with Snapcraft for secure, repeatable installs.',
       },
       {
-        title: 'Typography',
-        description: 'Adept in selecting and manipulating typefaces to enhance design aesthetics.',
+        title: 'Docker',
+        description: 'Containerization and deployment of services, CI pipelines and reproducible dev environments.',
       },
       {
-        title: 'Color theory',
-        description: 'Proficient in using color to evoke emotions and enhance visual harmony.',
+        title: 'PCB Design',
+        description: 'Schematic capture and PCB layout for embedded systems and sensor interfaces.',
       },
       {
-        title: 'Print and digital design',
-        description: 'Knowledgeable in designing for both print materials and digital platforms.',
+        title: 'CAD Modeling',
+        description: 'Mechanical design for robot components using CAD tools and export for manufacturing.',
       },
       {
-        title: 'Attention to detail',
-        description: 'Diligent in maintaining precision and quality in all design work.',
+        title: 'Workflow Automation',
+        description: 'Automating build/test/deploy workflows using CI/CD, scripting and container tooling.',
+      },
+      {
+        title: 'Embedded Systems',
+        description: 'Firmware development and low-level integration for microcontrollers and SOCs.',
       },
       {
         title: 'Adaptability',
-        description: 'Quick to adapt to new design trends, technologies, and client preferences.',
+        description: 'Fast learner who applies new tools and methods to deliver project goals effectively.',
+      },
+    ]}
+  />
+
+  <!-- Recommendations Widget ************** -->
+
+  <Testimonials
+    id="recommendations"
+    title="Professional Recommendations"
+    subtitle="Professional recommendations from colleagues and collaborators."
+    testimonials={[
+      {
+        testimonial: `Rahul Ravichandran worked with me in the preparatory phase of MBZIRC, an international robotics competition held at Abu Dhabi, 2020. He developed code stacks mainly for challenges 1 and 2, performed simulations in Gazebo, and tested them on drones. He is one among the most dedicated individuals I have worked with! He is an amazing learner and a smart team mate. He is capable of managing multiple projects simultaneously. It was indeed a joy to work with Rahul!`,
+        name: 'Lima Agnel Tony',
+        job: 'Scientist/Roboticist · Worked together on MBZIRC competition (December 2020)',
+        image: {
+          src: 'https://media.licdn.com/dms/image/v2/C5603AQHSsLaVoDxYwg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1661089774584?e=1768435200&v=beta&t=lUTtRa9VS674FYnS-PoyT4oeH312ztV9T0ztk0Uj-mc',
+          alt: 'Lima Agnel Tony',
+        },
+      },
+      {
+        testimonial: `I have known Rahul since the 1st semester of his undergraduate study. He was part of the ZINE Robotics and Research group under my supervision and has participated and won many competitions at IITs and at local universities. I have taught Rahul a course on Control Theory (Semester 6), which includes both theory as well as practical sessions. I have known him as brilliant and seeking student.`,
+        name: 'Rajesh Kumar',
+        job: 'FIET, FIEI, FIETE, SMIEEE, LMISTE Professor (Artificial Intelligence) IEEE IAS Distinguished Lecturer 2024-2025',
+        image: {
+          src: 'https://media.licdn.com/dms/image/v2/D4D03AQFtndDnQG4tGA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1672585792736?e=1768435200&v=beta&t=Nvb6TkwM1QxEY9PxFjR3dfSIk-O4NFzABM6vuNZmsAg',
+          alt: 'Rajesh Kumar',
+        },
+      },
+    ]}
+  />
+
+  <!-- Publications Widget ************** -->
+
+  <Steps
+    id="publications"
+    title="Publications"
+    items={[
+      {
+        title:
+          'Trajectory Tracking based on Adaptive Weights Receding Horizon Control by Differential Drive Robot <br /> <span class="font-normal">Authors: Samidha Mridul Verma, Rahul Ravichandran, Rahul Singhal, Rajesh Kumar</span> <br /> <span class="text-sm font-normal">IEEE · October 31, 2020</span>',
+        description: `In this paper, an adaptive weights receding horizon control (AWRHC) for trajectory tracking of a robot is presented. Because of the physical constraints of the robot, the conventional receding horizon control (RHC) may result in some perturbations from the reference trajectory when it is near the desired trajectory. The adaptive weights adjust the preferences for the way-points selected from the reference trajectory. The simulation results of RHC were compared with AWRHC for straight and circular trajectory tracking. The evaluation of both RHC strategies were carried out by Grey Wolf Optimizer (GWO). The AWRHC approach significantly reduces perturbations which results in quicker path following with lower path transverse at the cost of negligible increase in computation time. <br /><br /><a href="https://ieeexplore.ieee.org/document/9240398/authors#authors" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-medium">View Publication on IEEE Xplore →</a>`,
+        icon: 'tabler:file-text',
+      },
+      {
+        title:
+          'Collaborative Tracking and Capture of Aerial Object using UAVs <br /> <span class="font-normal">Authors: Lima Agnel Tony, Shuvrangshu Jana, Varun V P, Vidyadhara B V, Mohitvishnu S Gadde, Abhishek Kashyap, Rahul Ravichandran, Debasish Ghose</span> <br /> <span class="text-sm font-normal">MBZIRC Symposium 2020 · ADNEC, Abu Dhabi</span>',
+        description: `This work details the problem of aerial target capture using multiple UAVs. This problem is motivated from the challenge 1 of Mohammed Bin Zayed International Robotic Challenge 2020. The UAVs utilise visual feedback to autonomously detect target, approach it and capture without disturbing the vehicle which carries the target. Multi-UAV collaboration improves the efficiency of the system and increases the chance of capturing the ball robustly in short span of time. In this paper, the proposed architecture is validated through simulation in ROS-Gazebo environment and is further implemented on hardware. <br /><br /><a href="https://arxiv.org/abs/2010.01588" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-medium">View Publication on arXiv →</a>`,
+        icon: 'tabler:file-text',
+      },
+      {
+        title:
+          'UAV Based Survivor Search during Floods <br /> <span class="font-normal">Authors: Rahul Ravichandran, Debasish Ghose, Kaushik Das</span> <br /> <span class="text-sm font-normal">2019 International Conference on Unmanned Aircraft Systems (ICUAS) · Jun 11, 2019</span>',
+        description: `This paper addresses the problem of searching for survivors in flood affected regions. These search missions are carried out by UAVs (Unmanned Aerial Vehicles) in order to search faster and cover larger distances.  <br /><br /><a href="https://ieeexplore.ieee.org/document/8798127" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-medium">View Publication on IEEE Xplore →</a>`,
+        icon: 'tabler:file-text',
+      },
+      {
+        title:
+          'Discretization Schemes Comparison for the Greenhouse Temperature Model <br /> <span class="font-normal">Authors: Rahul Singhal, Rahul Ravichandran, Rajesh Kumar, Satyanarayana Neeli</span> <br /> <span class="text-sm font-normal">2018 8th IEEE India International Conference on Power Electronics (IICPE) · May 9, 2019</span>',
+        description: `In this paper, we suggest a suitable discretization method for the greenhouse temperature model by comparing conventionally used methods Runge-Kutta 4 (RK4) and Euler method with other discretization methods which includes explicit and embedded methods. <br /><br /><a href="https://ieeexplore.ieee.org/document/8709342" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-medium">View Publication on IEEE Xplore →</a>`,
+        icon: 'tabler:file-text',
+      },
+      {
+        title:
+          'Joint Angle Measurement using MEMs based Inertial sensor for biped robot <br /> <span class="font-normal">Authors: Rahul Ravichandran, Akshay Kumar, Rajesh Kumar </span> <br /> <span class="text-sm font-normal">2018 Second International Conference on Electronics, Communication and Aerospace Technology (ICECA) · Oct 1, 2018</span>',
+        description: `This project introduces the idea of using IMU to provide a position feedback to the control of biped robot rather than using encoders. <br /><br /><a href="https://ieeexplore.ieee.org/document/8474917" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-medium">View Publication on IEEE Xplore →</a>`,
+        icon: 'tabler:file-text',
+      },
+    ]}
+    classes={{ container: 'max-w-3xl' }}
+  />
+
+  <!-- Languages Widget ************** -->
+
+  <Features3
+    id="languages"
+    title="Languages"
+    subtitle="Languages I speak and write."
+    columns={3}
+    defaultIcon="tabler:language"
+    items={[
+      {
+        title: 'English',
+        description: 'Professional proficiency',
+      },
+      {
+        title: 'Danish',
+        description: 'Speaking proficiency',
+      },
+      {
+        title: 'Tamil',
+        description: 'Native or bilingual proficiency',
+      },
+      {
+        title: 'Hindi',
+        description: 'Professional proficiency',
+      },
+      {
+        title: 'Telugu',
+        description: 'Speaking proficiency',
+      },
+      {
+        title: 'Japanese',
+        description: 'Speaking proficiency',
       },
     ]}
   />
@@ -202,35 +312,35 @@ const metadata = {
 
   <Content
     id="porfolio"
-    title="Elevating visual narratives"
-    subtitle="Embark on a design journey that surpasses pixels, entering a realm of imagination. Explore my portfolio, where passion and creativity converge to shape enthralling visual narratives."
+    title="Robotics Projects & Solutions"
+    subtitle="Explore my portfolio of robotics projects, from autonomous systems to industrial automation solutions. Each project demonstrates expertise in software integration, hardware design, and system deployment."
     isReversed
     items={[
       {
         title: 'Description:',
         description:
-          'Developed a comprehensive brand identity for a tech startup, Tech Innovators, specializing in disruptive innovations. The goal was to convey a modern yet approachable image that resonated with both corporate clients and tech enthusiasts.',
+          'Developed and integrated software solutions for autonomous field marking robots at TurfTank. Implemented secure Ubuntu Core OS deployment using Snapcraft, enabling reliable and maintainable robot operations in agricultural and sports field applications.',
       },
       {
-        title: 'Role:',
+        title: 'Key Achievements:',
         description:
-          'Led the entire branding process from concept to execution. Created a dynamic logo that symbolized innovation, selected a vibrant color palette, and I designed corporate stationery, website graphics, and social media assets.',
+          'Built CI/CD pipelines for automated testing and deployment. Optimized robot workflows and functionalities for production environments. Managed containerized services using Docker for reproducible development and deployment processes.',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1658248165252-71e116af1b34?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=928&q=80',
-      alt: 'Tech Design Image',
+      src: '~/assets/images/turftank_robot.jpg',
+      alt: 'TurfTank Robotics Project',
     }}
     callToAction={{
       target: '_blank',
-      text: 'Go to the project',
+      text: 'Learn more',
       icon: 'tabler:chevron-right',
-      href: '#',
+      href: 'https://www.linkedin.com/in/rahul-ravichandran-b89363129/',
     }}
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 1: <br /><span class="text-2xl">Brand identity for tech innovators</span>
+        Project 1: <br /><span class="text-2xl">Autonomous Field Marking Robot System</span>
       </h3>
     </Fragment>
 
@@ -239,7 +349,8 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Content Widget **************** -->
+
+  <!-- Content Widget *** Drone-based 3D Area Localization *** -->
 
   <Content
     isReversed
@@ -248,27 +359,28 @@ const metadata = {
       {
         title: 'Description:',
         description:
-          'Designed a captivating event poster for an art and music festival, "ArtWave Fusion," aiming to showcase the synergy between visual art and music genres.',
+          'Developed advanced 3D area mapping and localization systems using drone-based sensing platforms. This project combines computer vision, LiDAR fusion, and spatial reconstruction algorithms for precise environmental mapping and drone autonomy.',
       },
       {
-        title: 'Role:',
-        description: `Translated the festival's creative theme into a visually striking poster. Used bold typography, vibrant colors, and abstract elements to depict the fusion of art and music. Ensured the design captured the festival's vibrant atmosphere.`,
+        title: 'Technical Achievements:',
+        description:
+          'Implemented visual SLAM and 3D reconstruction algorithms for autonomous mapping. Integrated multi-sensor fusion (camera, LiDAR, IMU) for robust localization. Developed path planning algorithms using 3D environmental maps. Created real-time visualization and post-processing pipelines for map generation.',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1619983081563-430f63602796?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-      alt: 'Art and Music Poster Image',
+      src: '~/assets/images/3d_area.png',
+      alt: 'Drone 3D Mapping',
     }}
     callToAction={{
       target: '_blank',
-      text: 'Go to the project',
+      text: 'Learn more',
       icon: 'tabler:chevron-right',
-      href: '#',
+      href: 'https://www.linkedin.com/in/rahul-ravichandran-b89363129/',
     }}
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 2: <br /><span class="text-2xl">Event poster for art & music festival</span>
+        Project 2: <br /><span class="text-2xl">Drone-based 3D Area Localization & Mapping</span>
       </h3>
     </Fragment>
 
@@ -277,7 +389,7 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Content Widget **************** -->
+  <!-- Content Widget *** Little Helper 8 *** -->
 
   <Content
     isReversed
@@ -285,27 +397,29 @@ const metadata = {
     items={[
       {
         title: 'Description:',
-        description: `Redesigned the e-commerce website for an eco-conscious fashion brand, GreenVogue. The objective was to align the brand's online presence with its sustainable ethos and improve user experience.`,
+        description:
+          'Developed and integrated software solutions for Little Helper 8, a collaborative mobile robot platform designed for industrial and research environments. Focused on autonomous navigation, human-robot interaction, and task planning for industrial applications.',
       },
       {
-        title: 'Role:',
-        description: `Conducted a thorough analysis of the brand's values and customer base to inform the design direction. Created a visually appealing interface with intuitive navigation, highlighting sustainable materials, and integrating a user-friendly shopping experience.`,
+        title: 'Technical Contributions:',
+        description:
+          'Implemented ROS2-based control architecture for navigation and task execution. Developed safety-critical systems for human-robot collaboration. Integrated sensor fusion for reliable localization and obstacle detection. Optimized real-time performance for production environments.',
       },
     ]}
     image={{
-      src: 'https://plus.unsplash.com/premium_photo-1683288295841-782fa47e4770?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
-      alt: 'Fashion e-commerce Image',
+      src: '~/assets/images/lh8_robot.png',
+      alt: 'Little Helper 8 Robot',
     }}
     callToAction={{
       target: '_blank',
-      text: 'Go to the project',
+      text: 'Learn more',
       icon: 'tabler:chevron-right',
-      href: '#',
+      href: 'https://www.linkedin.com/in/rahul-ravichandran-b89363129/',
     }}
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 3: <br /><span class="text-2xl">E-commerce website redesign for fashion brand</span>
+        Project 3: <br /><span class="text-2xl">Little Helper 8 — Collaborative Mobile Robot Platform</span>
       </h3>
     </Fragment>
 
@@ -314,92 +428,137 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Testimonials Widget *********** -->
+    <!-- Content Widget Predict drone project -->
 
-  <Testimonials
-    title="Client testimonials"
-    subtitle="Discover what clients have to say about their experiences working with me."
-    testimonials={[
+    <Content
+    isReversed
+    isAfterContent={true}
+    items={[
       {
-        testimonial: `She took our vague concept and turned it into a visual masterpiece that perfectly aligned with our goals. Her attention to detail and ability to translate ideas into compelling visuals exceeded our expectations.`,
-        name: 'Mark Thompson',
-        job: 'Creative director',
-        image: {
-          src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Mark Thompson Image',
-        },
+        title: 'Description:',
+        description:
+          'Built a custom multicore processor-based drone from the ground up for stabilization and navigation systems. This project involved collaboration with DTU and required expertise in 3D modeling, PCB design, and embedded C programming.',
       },
       {
-        testimonial: `She transformed our brand identity with her creative finesse, capturing our essence in every element. Her dedication and talent truly shine through her work.`,
-        name: 'Emily Martinez',
-        job: 'CEO',
-        image: {
-          src: 'https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=772&q=80',
-          alt: 'Emily Martinez Image',
-        },
-      },
-      {
-        testimonial: `She has an uncanny ability to communicate emotions and stories. She crafted a logo for our NGO that not only represents our cause but also evokes empathy. Her professionalism and commitment make her a designer of exceptional caliber.`,
-        name: 'Laura Simmons',
-        job: 'Founder of an NGO',
-        image: {
-          src: 'https://images.unsplash.com/photo-1554727242-741c14fa561c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Laura Simmons Image',
-        },
-      },
-      {
-        testimonial: `We entrusted Sarah with revamping our website's user interface, and the results were astounding. Her intuitive design sense enhanced user experience, leading to a significant increase in engagement. She's a designer who truly understands the synergy of aesthetics and functionality.`,
-        name: 'Alex Foster',
-        job: 'Director of web services',
-        image: {
-          src: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Alex Foster Image',
-        },
-      },
-      {
-        testimonial: `She took our vision and elevated it beyond imagination. Her ability to capture brand essence and translate it into design is nothing short of remarkable. Working with her has been an inspiring journey.`,
-        name: 'Jessica Collins',
-        job: 'Product Manager',
-        image: {
-          src: 'https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=778&q=80',
-          alt: 'Jessica Collins Image',
-        },
-      },
-      {
-        testimonial: `Her ability to transform concepts into captivating visuals is nothing short of extraordinary. She took our event poster idea and turned it into a visual masterpiece that perfectly captured the essence of our festival. Sarah's dedication, creativity, and knack for delivering beyond expectations make her an invaluable asset to any project.`,
-        name: 'Michael Carter',
-        job: 'Event Coordinator',
-        image: {
-          src: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-          alt: 'Michael Carter Image',
-        },
+        title: 'Technical Skills Applied:',
+        description: `Designed custom PCBs for flight control systems. Developed firmware for multicore processors handling real-time stabilization and navigation algorithms. Created 3D models for drone frame and component integration.`,
       },
     ]}
-  />
+    image={{
+      src: 'https://media.licdn.com/dms/image/v2/C4D2DAQFyM00IMkMuZw/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1623841750642?e=1767618000&v=beta&t=JlGA3oKBgXQ7uFVkdkdUSFFsCbpqZ7P4n9W9NJHPPpg',
+      alt: 'Drone Development Project',
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'Learn more',
+      icon: 'tabler:chevron-right',
+      href: 'https://www.linkedin.com/in/rahul-ravichandran-b89363129/',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Project 4: <br /><span class="text-2xl">Custom Multicore Processor Drone System</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+    <!-- Content Widget MBZIRC Competition -->
+
+    <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description:',
+        description: `Developed ROS/Gazebo simulations for drone path planning, swarm navigation, and probabilistic search patterns. Participated in the international MBZIRC drone competition, contributing to advanced autonomous flight capabilities.`,
+      },
+      {
+        title: 'Research Contributions:',
+        description: `Implemented path planning algorithms for autonomous drone navigation. Developed swarm coordination algorithms for multi-drone systems. Created probabilistic search patterns for search and rescue applications. Contributed to competition-level autonomous systems.`,
+      },
+    ]}
+    image={{
+      src: '~/assets/images/MBZIRC_gazebo.png',
+      alt: 'ROS Gazebo Simulation Project',
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'Learn more',
+      icon: 'tabler:chevron-right',
+      href: 'https://www.linkedin.com/in/rahul-ravichandran-b89363129/',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Project 5: <br /><span class="text-2xl">ROS/Gazebo Drone Simulation & MBZIRC Competition</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget *** Biped Robot IMU *** -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description:',
+        description:
+          'Developed IMU-based sensing systems for biped robot joint angle measurement and feedback control. This project replaced traditional encoder-based feedback with MEMS inertial sensors for improved responsiveness and reduced mechanical complexity.',
+      },
+      {
+        title: 'Technical Innovation:',
+        description:
+          'Designed MEMS sensor integration for real-time joint feedback. Developed signal processing algorithms for IMU data filtering and angle estimation. Implemented control loops using inertial feedback for biped stability and locomotion.',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/biped.png',
+      alt: 'Biped Robot Control',
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'View IEEE Publication',
+      icon: 'tabler:chevron-right',
+      href: 'https://ieeexplore.ieee.org/document/8474917',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Project 6: <br /><span class="text-2xl">IMU-Based Biped Robot Joint Angle Sensing</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
 
   <!-- CallToAction Widget *********** -->
 
   <CallToAction
-    title="Let's create together"
-    subtitle="Ready to transform your vision into captivating designs?"
+    title="Let's collaborate"
+    subtitle="Interested in robotics solutions, automation, or embedded systems? Let's discuss how we can work together."
     actions={[
       {
         variant: 'primary',
-        text: 'Hire me',
-        href: '/',
+        text: 'Contact me',
+        href: getPermalink('/contact#form'),
+      },
+      {
+        variant: 'secondary',
+        text: 'View LinkedIn',
+        href: 'https://www.linkedin.com/in/rahul-ravichandran-b89363129/',
+        target: '_blank',
       },
     ]}
   />
-
-  <!-- BlogLatestPost Widget **************** -->
-
-  <BlogLatestPosts
-    id="blog"
-    title="Explore my insightful articles on my blog"
-    information={`Dive into a realm of design wisdom and creative inspiration, where you'll find invaluable insights, practical tips, and captivating narratives that elevate and enrich your creative journey.`}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </BlogLatestPosts>
 </Layout>
