@@ -208,7 +208,7 @@ const metadata = {
 
   <Testimonials
     id="recommendations"
-    title="Recommendations"
+    title="Professional Recommendations"
     subtitle="Professional recommendations from colleagues and collaborators."
     testimonials={[
       {
@@ -218,6 +218,15 @@ const metadata = {
         image: {
           src: 'https://media.licdn.com/dms/image/v2/C5603AQHSsLaVoDxYwg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1661089774584?e=1768435200&v=beta&t=lUTtRa9VS674FYnS-PoyT4oeH312ztV9T0ztk0Uj-mc',
           alt: 'Lima Agnel Tony',
+        },
+      },
+      {
+        testimonial: `I have known Rahul since the 1st semester of his undergraduate study. He was part of the ZINE Robotics and Research group under my supervision and has participated and won many competitions at IITs and at local universities. I have taught Rahul a course on Control Theory (Semester 6), which includes both theory as well as practical sessions. I have known him as brilliant and seeking student.`,
+        name: 'Rajesh Kumar',
+        job: 'FIET, FIEI, FIETE, SMIEEE, LMISTE Professor (Artificial Intelligence) IEEE IAS Distinguished Lecturer 2024-2025',
+        image: {
+          src: 'https://media.licdn.com/dms/image/v2/D4D03AQFtndDnQG4tGA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1672585792736?e=1768435200&v=beta&t=Nvb6TkwM1QxEY9PxFjR3dfSIk-O4NFzABM6vuNZmsAg',
+          alt: 'Rajesh Kumar',
         },
       },
     ]}
@@ -340,7 +349,8 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Content Widget **************** -->
+
+  <!-- Content Widget *** Drone-based 3D Area Localization *** -->
 
   <Content
     isReversed
@@ -349,16 +359,17 @@ const metadata = {
       {
         title: 'Description:',
         description:
-          'Built a custom multicore processor-based drone from the ground up for stabilization and navigation systems. This project involved collaboration with DTU and required expertise in 3D modeling, PCB design, and embedded C programming.',
+          'Developed advanced 3D area mapping and localization systems using drone-based sensing platforms. This project combines computer vision, LiDAR fusion, and spatial reconstruction algorithms for precise environmental mapping and drone autonomy.',
       },
       {
-        title: 'Technical Skills Applied:',
-        description: `Designed custom PCBs for flight control systems. Developed firmware for multicore processors handling real-time stabilization and navigation algorithms. Created 3D models for drone frame and component integration.`,
+        title: 'Technical Achievements:',
+        description:
+          'Implemented visual SLAM and 3D reconstruction algorithms for autonomous mapping. Integrated multi-sensor fusion (camera, LiDAR, IMU) for robust localization. Developed path planning algorithms using 3D environmental maps. Created real-time visualization and post-processing pipelines for map generation.',
       },
     ]}
     image={{
-      src: 'https://media.licdn.com/dms/image/v2/C4D2DAQFyM00IMkMuZw/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1623841750642?e=1767618000&v=beta&t=JlGA3oKBgXQ7uFVkdkdUSFFsCbpqZ7P4n9W9NJHPPpg',
-      alt: 'Drone Development Project',
+      src: '~/assets/images/3d_area.png',
+      alt: 'Drone 3D Mapping',
     }}
     callToAction={{
       target: '_blank',
@@ -369,44 +380,7 @@ const metadata = {
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 2: <br /><span class="text-2xl">Custom Multicore Processor Drone System</span>
-      </h3>
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent={true}
-    items={[
-      {
-        title: 'Description:',
-        description: `Developed ROS/Gazebo simulations for drone path planning, swarm navigation, and probabilistic search patterns. Participated in the international MBZIRC drone competition, contributing to advanced autonomous flight capabilities.`,
-      },
-      {
-        title: 'Research Contributions:',
-        description: `Implemented path planning algorithms for autonomous drone navigation. Developed swarm coordination algorithms for multi-drone systems. Created probabilistic search patterns for search and rescue applications. Contributed to competition-level autonomous systems.`,
-      },
-    ]}
-    image={{
-      src: '~/assets/images/MBZIRC_gazebo.png',
-      alt: 'ROS Gazebo Simulation Project',
-    }}
-    callToAction={{
-      target: '_blank',
-      text: 'Learn more',
-      icon: 'tabler:chevron-right',
-      href: 'https://www.linkedin.com/in/rahul-ravichandran-b89363129/',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 3: <br /><span class="text-2xl">ROS/Gazebo Drone Simulation & MBZIRC Competition</span>
+        Project 2: <br /><span class="text-2xl">Drone-based 3D Area Localization & Mapping</span>
       </h3>
     </Fragment>
 
@@ -445,7 +419,7 @@ const metadata = {
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 4: <br /><span class="text-2xl">Little Helper 8 — Collaborative Mobile Robot Platform</span>
+        Project 3: <br /><span class="text-2xl">Little Helper 8 — Collaborative Mobile Robot Platform</span>
       </h3>
     </Fragment>
 
@@ -454,26 +428,25 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Content Widget *** Drone-based 3D Area Localization *** -->
+    <!-- Content Widget Predict drone project -->
 
-  <Content
+    <Content
     isReversed
     isAfterContent={true}
     items={[
       {
         title: 'Description:',
         description:
-          'Developed advanced 3D area mapping and localization systems using drone-based sensing platforms. This project combines computer vision, LiDAR fusion, and spatial reconstruction algorithms for precise environmental mapping and drone autonomy.',
+          'Built a custom multicore processor-based drone from the ground up for stabilization and navigation systems. This project involved collaboration with DTU and required expertise in 3D modeling, PCB design, and embedded C programming.',
       },
       {
-        title: 'Technical Achievements:',
-        description:
-          'Implemented visual SLAM and 3D reconstruction algorithms for autonomous mapping. Integrated multi-sensor fusion (camera, LiDAR, IMU) for robust localization. Developed path planning algorithms using 3D environmental maps. Created real-time visualization and post-processing pipelines for map generation.',
+        title: 'Technical Skills Applied:',
+        description: `Designed custom PCBs for flight control systems. Developed firmware for multicore processors handling real-time stabilization and navigation algorithms. Created 3D models for drone frame and component integration.`,
       },
     ]}
     image={{
-      src: '~/assets/images/3d_area.png',
-      alt: 'Drone 3D Mapping',
+      src: 'https://media.licdn.com/dms/image/v2/C4D2DAQFyM00IMkMuZw/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1623841750642?e=1767618000&v=beta&t=JlGA3oKBgXQ7uFVkdkdUSFFsCbpqZ7P4n9W9NJHPPpg',
+      alt: 'Drone Development Project',
     }}
     callToAction={{
       target: '_blank',
@@ -484,7 +457,44 @@ const metadata = {
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 6: <br /><span class="text-2xl">Drone-based 3D Area Localization & Mapping</span>
+        Project 4: <br /><span class="text-2xl">Custom Multicore Processor Drone System</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+    <!-- Content Widget MBZIRC Competition -->
+
+    <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description:',
+        description: `Developed ROS/Gazebo simulations for drone path planning, swarm navigation, and probabilistic search patterns. Participated in the international MBZIRC drone competition, contributing to advanced autonomous flight capabilities.`,
+      },
+      {
+        title: 'Research Contributions:',
+        description: `Implemented path planning algorithms for autonomous drone navigation. Developed swarm coordination algorithms for multi-drone systems. Created probabilistic search patterns for search and rescue applications. Contributed to competition-level autonomous systems.`,
+      },
+    ]}
+    image={{
+      src: '~/assets/images/MBZIRC_gazebo.png',
+      alt: 'ROS Gazebo Simulation Project',
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'Learn more',
+      icon: 'tabler:chevron-right',
+      href: 'https://www.linkedin.com/in/rahul-ravichandran-b89363129/',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Project 5: <br /><span class="text-2xl">ROS/Gazebo Drone Simulation & MBZIRC Competition</span>
       </h3>
     </Fragment>
 
@@ -523,7 +533,7 @@ const metadata = {
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 7: <br /><span class="text-2xl">IMU-Based Biped Robot Joint Angle Sensing</span>
+        Project 6: <br /><span class="text-2xl">IMU-Based Biped Robot Joint Angle Sensing</span>
       </h3>
     </Fragment>
 
@@ -531,24 +541,6 @@ const metadata = {
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Content>
-
-  <!-- Testimonials Widget *********** -->
-
-  <Testimonials
-    title="Professional Recommendations"
-    subtitle="What colleagues and collaborators say about working with me."
-    testimonials={[
-      {
-        testimonial: `Rahul Ravichandran worked with me in the preparatory phase of MBZIRC, an international robotics competition held at Abu Dhabi, 2020. He developed code stacks mainly for challenges 1 and 2, performed simulations in Gazebo, and tested them on drones. He is one among the most dedicated individuals I have worked with! He is an amazing learner and a smart team mate. He is capable of managing multiple projects simultaneously. It was indeed a joy to work with Rahul!`,
-        name: 'Lima Agnel Tony',
-        job: 'Scientist/Roboticist · Worked together on MBZIRC competition',
-        image: {
-          src: 'https://media.licdn.com/dms/image/v2/C5603AQHSsLaVoDxYwg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1661089774584?e=1768435200&v=beta&t=lUTtRa9VS674FYnS-PoyT4oeH312ztV9T0ztk0Uj-mc',
-          alt: 'Lima Agnel Tony',
-        },
-      },
-    ]}
-  />
 
   <!-- CallToAction Widget *********** -->
 
