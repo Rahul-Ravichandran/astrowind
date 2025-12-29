@@ -319,7 +319,7 @@ const metadata = {
       {
         title: 'Description:',
         description:
-          'Developed and integrated software solutions for autonomous field marking robots at TurfTank. Implemented secure Ubuntu Core OS deployment using Snapcraft, enabling reliable and maintainable robot operations in agricultural and sports field applications.',
+          'Developed and integrated software solutions for autonomous field marking robots at TurfTank. Implemented secure Ubuntu Core OS deployment using Snapcraft, enabling reliable and maintainable robot operations in sports field applications.',
       },
       {
         title: 'Key Achievements:',
@@ -349,7 +349,6 @@ const metadata = {
     </Fragment>
   </Content>
 
-
   <!-- Content Widget *** Drone-based 3D Area Localization *** -->
 
   <Content
@@ -359,12 +358,12 @@ const metadata = {
       {
         title: 'Description:',
         description:
-          'Developed advanced 3D area mapping and localization systems using drone-based sensing platforms. This project combines computer vision, LiDAR fusion, and spatial reconstruction algorithms for precise environmental mapping and drone autonomy.',
+          'Developed advanced 3D area mapping and localization systems only using monocular camera. The drone works by detecting and tracking features on consecutive frames and localizes them using kalman filter.',
       },
       {
         title: 'Technical Achievements:',
         description:
-          'Implemented visual SLAM and 3D reconstruction algorithms for autonomous mapping. Integrated multi-sensor fusion (camera, LiDAR, IMU) for robust localization. Developed path planning algorithms using 3D environmental maps. Created real-time visualization and post-processing pipelines for map generation.',
+          'Implemented ORB feature detection and kalman filter for localising the feature points. The simulation was done on Ureal Engine for better visualization of features. The points are then grouped to form a 3D pointcloud of the terrain.',
       },
     ]}
     image={{
@@ -403,7 +402,7 @@ const metadata = {
       {
         title: 'Technical Contributions:',
         description:
-          'Implemented ROS2-based control architecture for navigation and task execution. Developed safety-critical systems for human-robot collaboration. Integrated sensor fusion for reliable localization and obstacle detection. Optimized real-time performance for production environments.',
+          'Implemented kinematic control for mecanum drive robot using a ROS-based control architecture for navigation and task execution. Integrated LiDAR and IMU sensor fusion for reliable indoor localization and obstacle detection. Implemented TEB local planner for dynamic path planning in cluttered environments.',
       },
     ]}
     image={{
@@ -428,9 +427,9 @@ const metadata = {
     </Fragment>
   </Content>
 
-    <!-- Content Widget Predict drone project -->
+  <!-- Content Widget Predict drone project -->
 
-    <Content
+  <Content
     isReversed
     isAfterContent={true}
     items={[
@@ -466,24 +465,24 @@ const metadata = {
     </Fragment>
   </Content>
 
-    <!-- Content Widget MBZIRC Competition -->
+  <!-- Content Widget *** MBZIRC Competition *** -->
 
-    <Content
+  <Content
     isReversed
     isAfterContent={true}
     items={[
       {
         title: 'Description:',
-        description: `Developed ROS/Gazebo simulations for drone path planning, swarm navigation, and probabilistic search patterns. Participated in the international MBZIRC drone competition, contributing to advanced autonomous flight capabilities.`,
+        description: `Participated in the Mohammed Bin Zayed International Robotics Challenge (MBZIRC) 2020 in Abu Dhabi. Developed autonomous systems for aerial target detection and capture tasks using multiple UAVs with visual feedback and collaborative coordination.`,
       },
       {
-        title: 'Research Contributions:',
-        description: `Implemented path planning algorithms for autonomous drone navigation. Developed swarm coordination algorithms for multi-drone systems. Created probabilistic search patterns for search and rescue applications. Contributed to competition-level autonomous systems.`,
+        title: 'Key Achievements:',
+        description: `Implemented vision-based target detection and autonomous approach algorithms. Developed multi-UAV collaboration frameworks for coordinated capture. Conducted extensive simulations in ROS-Gazebo environment with hardware implementation. Contributed to both Challenge 1 and Challenge 2 of the international competition.`,
       },
     ]}
     image={{
       src: '~/assets/images/MBZIRC_gazebo.png',
-      alt: 'ROS Gazebo Simulation Project',
+      alt: 'MBZIRC Competition UAV',
     }}
     callToAction={{
       target: '_blank',
@@ -494,7 +493,81 @@ const metadata = {
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 5: <br /><span class="text-2xl">ROS/Gazebo Drone Simulation & MBZIRC Competition</span>
+        Project 5: <br /><span class="text-2xl">MBZIRC International Robotics Challenge</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget *** Swarm Robotics Navigation *** -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description:',
+        description: `Developed advanced swarm robotics algorithms for UAV-UGV coordination and collaborative navigation. Focused on achieving tasks together while avoiding obstacles. Main tasks include search and exploration tasks with minimal central coordination.`,
+      },
+      {
+        title: 'Technical Contributions:',
+        description: `Designed distributed swarm navigation simulations using ROS-gazebo framework. Implemented potential-based obstacle avoidance algorithm for UAVs and UGVs.`,
+      },
+    ]}
+    image={{
+      src: '~/assets/images/swarm_ops.png',
+      alt: 'Swarm Robotics System',
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'Learn more',
+      icon: 'tabler:chevron-right',
+      href: 'https://www.linkedin.com/in/rahul-ravichandran-b89363129/',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Project 6: <br /><span class="text-2xl">Swarm Robotics Navigation & Coordination</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget *** UAV Survivor Search *** -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description:',
+        description: `Developed autonomous UAV systems for survivor search and rescue operations in flood-affected regions. This research-driven project combines probabilistic search patterns, efficient path planning, and computer vision for locating survivors across large geographic areas.`,
+      },
+      {
+        title: 'Research Impact:',
+        description: `Designed probabilistic search algorithms optimizing coverage and detection probability. Developed flight path planning algorithms for various survivors pattern scenarios. Presented research at the International Conference on Unmanned Aircraft Systems (ICUAS 2019).`,
+      },
+    ]}
+    image={{
+      src: '~/assets/images/prob_search.png',
+      alt: 'UAV Survivor Search System',
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'View Publication',
+      icon: 'tabler:chevron-right',
+      href: 'https://ieeexplore.ieee.org/document/8798127',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Project 7: <br /><span class="text-2xl">UAV-Based Survivor Search During Floods</span>
       </h3>
     </Fragment>
 
@@ -533,7 +606,44 @@ const metadata = {
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 6: <br /><span class="text-2xl">IMU-Based Biped Robot Joint Angle Sensing</span>
+        Project 8: <br /><span class="text-2xl">IMU-Based Biped Robot Joint Angle Sensing</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget *** ROBOCON Competition *** -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description:',
+        description: `Participated in ABU Robocon 2016 and 2018, a prestigious international robotics competition. Contributed to the design and implementation of robots that had to complete complex mechanical and operational challenges against teams from universities worldwide.`,
+      },
+      {
+        title: 'Key Contributions:',
+        description: `Designed and programmed robot control systems for competition tasks. Implemented mechanical designs and hardware integration. Participated in competition testing and optimization. Collaborated with multi-disciplinary team on both hardware and software aspects of competition robotics.`,
+      },
+    ]}
+    image={{
+      src: '~/assets/images/robocon.jpg',
+      alt: 'ROBOCON Competition',
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'Learn more',
+      icon: 'tabler:chevron-right',
+      href: 'https://www.linkedin.com/in/rahul-ravichandran-b89363129/',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Project 9: <br /><span class="text-2xl">ABU Robocon Competition</span>
       </h3>
     </Fragment>
 
