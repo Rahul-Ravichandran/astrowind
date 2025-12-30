@@ -24,17 +24,17 @@ export const headerData = {
       //   },
       // ],
     },
-    // {
-    //   text: 'Pages',
-    //   links: [
-    //     // {
-    //     //   text: 'Features (Anchor Link)',
-    //     //   href: getPermalink('/#features'),
-    //     // },
-    //     {
-    //       text: 'Services',
-    //       href: getPermalink('/services'),
-    //     },
+    {
+      text: 'Startup',
+      links: [
+        // {
+        //   text: 'Features (Anchor Link)',
+        //   href: getPermalink('/#features'),
+        // },
+        {
+          text: '3D Printing Services',
+          href: getPermalink('/homes/3d-printing'),
+        },
     //     {
     //       text: 'Pricing',
     //       href: getPermalink('/pricing'),
@@ -55,8 +55,8 @@ export const headerData = {
     //       text: 'Privacy policy',
     //       href: getPermalink('/privacy'),
     //     },
-    //   ],
-    // },
+      ],
+    },
     // {
     //   text: 'Landing',
     //   links: [

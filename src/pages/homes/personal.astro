@@ -66,7 +66,11 @@ const metadata = {
         { text: 'About', href: '#about' },
         { text: 'Resume', href: '#resume' },
         { text: 'Portfolio', href: '#porfolio' },
-        { text: 'Startup', href: getPermalink('/homes/3d-printing') },
+        {
+          text: 'Startup',
+          href: getPermalink('/homes/3d-printing'),
+          links: [{ text: '3D Printing Services', href: getPermalink('/homes/3d-printing') }],
+        },
         { text: 'GitHub', href: 'https://github.com/Rahul-Ravichandran' },
       ]}
       actions={[
@@ -773,66 +777,82 @@ const metadata = {
     </div>
   </div>
 
-  <script define:vars={{ imageUrlMap }}>
+  <script>
     // Lightbox functionality for project images
     document.addEventListener('DOMContentLoaded', () => {
       const lightbox = document.getElementById('image-lightbox');
-      const lightboxImage = document.getElementById('lightbox-image');
+      const lightboxImage = document.getElementById('lightbox-image') as HTMLImageElement | null;
       const lightboxClose = document.getElementById('lightbox-close');
 
-      if (!lightbox || !lightboxImage) return;
+      if (!lightbox || !lightboxImage) {
+        console.error('Lightbox elements not found');
+        return;
+      }
 
-      // Find all images in Content widgets and make them clickable
-      // Target images within sections that contain Content widgets
-      const contentSections = document.querySelectorAll('section');
-      const contentImages = [];
+      // Wait for images to load, then find project images
+      setTimeout(() => {
+        // Find all images in sections, excluding testimonials and lightbox
+        const allImages = document.querySelectorAll('section img');
+        const contentImages: HTMLImageElement[] = [];
 
-      contentSections.forEach((section) => {
-        const images = section.querySelectorAll('img');
-        images.forEach((img) => {
-          // Skip if already in lightbox or is a testimonial image
-          if (img.closest('#image-lightbox') || img.closest('[class*="testimonial"]')) return;
-          contentImages.push(img);
+        allImages.forEach((img) => {
+          const htmlImg = img as HTMLImageElement;
+          // Skip if already in lightbox
+          if (htmlImg.id === 'lightbox-image' || htmlImg.closest('#image-lightbox')) return;
+          // Skip testimonial images
+          const parent = htmlImg.closest('section, article, div');
+          if (
+            parent &&
+            (parent.classList.contains('testimonial') ||
+              (parent as HTMLElement).id?.includes('testimonial') ||
+              (parent as HTMLElement).id?.includes('recommendation') ||
+              parent.querySelector('[class*="testimonial"]'))
+          )
+            return;
+          // Skip very small images (likely icons)
+          if (htmlImg.naturalWidth < 100 || htmlImg.naturalHeight < 100) {
+            // Check computed size as fallback
+            const rect = htmlImg.getBoundingClientRect();
+            if (rect.width < 100 && rect.height < 100) return;
+          }
+          contentImages.push(htmlImg);
         });
-      });
 
-      contentImages.forEach((htmlImg) => {
-        // Make image clickable
-        htmlImg.style.cursor = 'pointer';
-        htmlImg.classList.add('hover:opacity-90', 'transition-opacity');
+        console.log('Found', contentImages.length, 'images for lightbox');
 
-        htmlImg.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
+        contentImages.forEach((htmlImg) => {
+          // Make image clickable
+          htmlImg.style.cursor = 'pointer';
+          htmlImg.classList.add('hover:opacity-90', 'transition-opacity');
 
-          // Get the current image src
-          let imgSrc = htmlImg.src;
-          const imgAlt = htmlImg.alt || 'Project image';
+          htmlImg.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
 
-          // Try to find full-size version in the map
-          // Extract filename from src
-          const srcMatch = imgSrc.match(/\/([^\/]+\.(jpg|jpeg|png|gif|webp))$/i);
-          if (srcMatch) {
-            const filename = srcMatch[1];
-            // Check if we have a mapped URL for this image
-            if (imageUrlMap[filename]) {
-              imgSrc = imageUrlMap[filename];
+            // Get the current image src - try multiple methods
+            let imgSrc = htmlImg.src || htmlImg.getAttribute('src') || htmlImg.getAttribute('data-src');
+            const imgAlt = htmlImg.alt || 'Project image';
+
+            if (!imgSrc) {
+              console.error('No image source found');
+              return;
             }
-          }
 
-          // For external images (like LinkedIn), use the current src directly
-          if (imgSrc.startsWith('http://') || imgSrc.startsWith('https://')) {
-            // Use the current src directly for external images
-          }
+            // Remove query parameters and use the base URL
+            imgSrc = imgSrc.split('?')[0];
 
-          lightboxImage.src = imgSrc;
-          lightboxImage.alt = imgAlt;
-          lightboxImage.id = 'lightbox-image-alt';
-          lightbox.classList.remove('hidden');
-          lightbox.classList.add('flex');
-          document.body.style.overflow = 'hidden';
+            // Set the lightbox image
+            if (lightboxImage) {
+              lightboxImage.src = imgSrc;
+              lightboxImage.alt = imgAlt;
+              lightboxImage.setAttribute('id', 'lightbox-image-alt');
+            }
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+          });
         });
-      });
+      }, 300); // Wait 300ms for images to load
 
       // Close lightbox functions
       const closeLightbox = () => {
@@ -843,7 +863,9 @@ const metadata = {
         lightboxImage.src = '';
       };
 
-      lightboxClose?.addEventListener('click', closeLightbox);
+      if (lightboxClose) {
+        lightboxClose.addEventListener('click', closeLightbox);
+      }
 
       // Close on background click
       lightbox.addEventListener('click', (e) => {
