@@ -1,0 +1,729 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Header from '~/components/widgets/Header.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Image from '~/components/common/Image.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Headline from '~/components/ui/Headline.astro';
+import { getPermalink } from '~/utils/permalinks';
+import { findImage } from '~/utils/images';
+
+// Import images for lightbox
+import foxMaskImg from '~/assets/images/fox_mask.jpg';
+import nomaiImg from '~/assets/images/nomai.jpg';
+import nezukoImg from '~/assets/images/nezuko.jpg';
+import ebichuImg from '~/assets/images/ebichu.jpg';
+import katanaImg from '~/assets/images/katana.jpg';
+
+// Get image URLs
+const foxMaskUrl = typeof foxMaskImg === 'string' ? foxMaskImg : foxMaskImg.src;
+const nomaiUrl = typeof nomaiImg === 'string' ? nomaiImg : nomaiImg.src;
+const nezukoUrl = typeof nezukoImg === 'string' ? nezukoImg : nezukoImg.src;
+const ebichuUrl = typeof ebichuImg === 'string' ? ebichuImg : ebichuImg.src;
+const katanaUrl = typeof katanaImg === 'string' ? katanaImg : katanaImg.src;
+
+const metadata = {
+  title: '3D Printing Services — Professional 3D Printing & Design Solutions',
+  description:
+    'Professional 3D printing services offering high-quality prints in ABS, PLA, and PETG materials. We also provide custom 3D design solutions for your projects.',
+};
+---
+
+<Layout metadata={metadata}>
+  <Fragment slot="announcement"></Fragment>
+  <Fragment slot="header">
+    <Header
+      links={[
+        { text: 'Home', href: getPermalink('/homes/3d-printing') },
+        { text: 'Services', href: '#services' },
+        { text: 'Figurines', href: '#figurines' },
+        { text: 'Materials', href: '#materials' },
+        { text: 'Design', href: '#design' },
+        { text: 'Products', href: '#products' },
+        { text: 'Pricing', href: getPermalink('/homes/pricing') },
+        { text: 'Contact', href: getPermalink('/contact#form') },
+      ]}
+      actions={[
+        {
+          text: 'Get Quote',
+          href: getPermalink('/contact#form'),
+        },
+      ]}
+      isSticky
+      showToggleTheme
+      showLogo={false}
+    />
+  </Fragment>
+
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    id="hero"
+    title="Hobby 3D Prints"
+    tagline="Bring Your Ideas to Life"
+    actions={[
+      { variant: 'primary', text: 'Get a Quote', href: getPermalink('/contact#form') },
+      { variant: 'secondary', text: 'View Services', href: '#services' },
+    ]}
+  >
+    <Fragment slot="subtitle">
+      High-quality 3D printing services in multiple materials including ABS, PLA, PETG, and TPU. We specialize in custom
+      figurines, anime merch, and personalized designs. We also offer custom 3D design solutions to help bring your
+      concepts to reality.
+    </Fragment>
+    <Fragment slot="bg">
+      <div class="absolute inset-0 overflow-hidden">
+        <!-- Colorful gradient background -->
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-blue-400 via-purple-500 via-pink-500 to-orange-400 dark:from-blue-900 dark:via-purple-900 dark:via-pink-900 dark:to-orange-900"
+        >
+        </div>
+        <!-- Animated gradient overlay for depth -->
+        <div
+          class="absolute inset-0 bg-gradient-to-tr from-cyan-400/30 via-transparent to-yellow-400/30 dark:from-cyan-600/20 dark:to-yellow-600/20"
+        >
+        </div>
+        <!-- Subtle pattern overlay -->
+        <div
+          class="absolute inset-0 opacity-10 dark:opacity-5"
+          style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.3) 1px, transparent 0); background-size: 60px 60px;"
+        >
+        </div>
+        <!-- Overlay for better text readability -->
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-white/70 via-white/30 to-transparent dark:from-slate-900/85 dark:via-slate-900/50 dark:to-transparent"
+        >
+        </div>
+        <!-- Additional subtle overlay for contrast -->
+        <div class="absolute inset-0 bg-white/20 dark:bg-slate-900/30"></div>
+      </div>
+    </Fragment>
+  </Hero>
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    id="services"
+    title="Our Services"
+    subtitle="Comprehensive 3D printing and design solutions tailored to your needs."
+    items={[
+      {
+        title: '3D Printing Services',
+        description:
+          'Professional 3D printing from your STL, OBJ, or other 3D file formats. We handle everything from small prototypes to larger production runs with precision and quality.',
+        icon: 'tabler:printer',
+      },
+      {
+        title: '3D Design Solutions',
+        description:
+          'Custom 3D modeling and design services. From concept to finished design, we help you create the perfect 3D model for your project needs.',
+        icon: 'tabler:cube',
+      },
+      {
+        title: 'Material Selection',
+        description:
+          'Expert guidance on material selection. We work with ABS, PLA, PETG, TPU, and other materials to match your project requirements for strength, flexibility, and finish.',
+        icon: 'tabler:package',
+      },
+      {
+        title: 'Post-Processing',
+        description:
+          'Professional finishing services including sanding, painting, and assembly to ensure your printed parts meet your exact specifications.',
+        icon: 'tabler:tools',
+      },
+      {
+        title: 'Figurines & Anime Merch',
+        description:
+          'Custom figurines and anime merchandise available on request. From character models to collectibles, we bring your favorite characters to life with high-quality 3D printing and finishing.',
+        icon: 'tabler:user',
+      },
+      {
+        title: 'Electroplating (Coming Soon)',
+        description:
+          'Electroplating services coming soon! We will offer professional metal plating services to give your 3D printed parts a metallic finish, enhanced durability, and a premium look. Stay tuned for updates.',
+        icon: 'tabler:sparkles',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 overflow-hidden">
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-purple-950/30 dark:via-pink-950/30 dark:to-orange-950/30"
+        >
+        </div>
+        <div
+          class="absolute inset-0 opacity-20 dark:opacity-10"
+          style="background-image: radial-gradient(circle at 2px 2px, rgba(139, 92, 246, 0.2) 1px, transparent 0); background-size: 50px 50px;"
+        >
+        </div>
+      </div>
+    </Fragment>
+  </Features2>
+
+  <!-- Content Widget **************** -->
+
+  <!-- Content Widget - Figurines & Anime Merch **************** -->
+
+  <Content
+    id="figurines"
+    title="Custom Figurines & Anime Merchandise"
+    subtitle="Bring your favorite characters to life with our custom 3D printed figurines and anime merchandise."
+    isReversed
+    items={[
+      {
+        title: 'Custom Figurines',
+        description:
+          'We create detailed custom figurines based on your specifications. Perfect for collectors, cosplayers, or anyone looking to own a unique piece. Available in various sizes and materials.',
+      },
+      {
+        title: 'Anime Merchandise',
+        description:
+          'From popular anime characters to original designs, we can create anime-themed merchandise including keychains, display pieces, action figures, and more. All available on request.',
+      },
+      {
+        title: 'High-Quality Finishing',
+        description:
+          'Our figurines and anime merch receive special attention to detail with professional post-processing including sanding, priming, and painting to achieve the perfect look.',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/ebichu.jpg',
+      alt: 'Custom Figurines and Anime Merchandise',
+      width: 800,
+      height: 600,
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">Figurines & Anime Merch</h2>
+      <p class="text-muted">
+        Specializing in custom figurines and anime merchandise! Whether you're looking for a specific character, a
+        collectible piece, or unique anime-themed items, we can create it for you. All figurines and anime merch are
+        available on request with custom sizing, materials, and finishing options.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 overflow-hidden">
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-blue-50 via-cyan-50 to-purple-50 dark:from-blue-950/30 dark:via-cyan-950/30 dark:to-purple-950/30"
+        >
+        </div>
+        <div
+          class="absolute inset-0 opacity-15 dark:opacity-8"
+          style="background-image: linear-gradient(45deg, rgba(99, 102, 241, 0.1) 25%, transparent 25%), linear-gradient(-45deg, rgba(99, 102, 241, 0.1) 25%, transparent 25%); background-size: 30px 30px;"
+        >
+        </div>
+      </div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    id="materials"
+    title="Materials We Work With"
+    subtitle="Choose from a variety of high-quality materials to suit your project needs."
+    items={[
+      {
+        title: 'ABS (Acrylonitrile Butadiene Styrene)',
+        description:
+          'Strong, durable, and heat-resistant. Ideal for functional parts, prototypes, and end-use products. Excellent for parts requiring toughness and impact resistance.',
+      },
+      {
+        title: 'PLA (Polylactic Acid)',
+        description:
+          'Easy to print, environmentally friendly, and available in a wide range of colors. Perfect for prototypes, decorative items, and educational projects.',
+      },
+      {
+        title: 'PETG (Polyethylene Terephthalate Glycol)',
+        description:
+          'Combines the ease of printing of PLA with the strength of ABS. Excellent layer adhesion, chemical resistance, and clarity make it ideal for functional parts.',
+      },
+      {
+        title: 'TPU (Thermoplastic Polyurethane)',
+        description:
+          'Flexible and elastic material perfect for parts requiring rubber-like properties. Excellent impact resistance, durability, and ability to withstand repeated flexing. Ideal for gaskets, phone cases, wearables, and flexible components.',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/filaments.jpg',
+      alt: '3D Printing Materials - ABS, PLA, PETG, TPU',
+      width: 800,
+      height: 800,
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">Material Options</h2>
+      <p class="text-muted">
+        We offer printing services in multiple materials, each with unique properties suited for different applications.
+        Our team can help you select the best material for your specific project requirements.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 overflow-hidden">
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-pink-50 via-orange-50 to-yellow-50 dark:from-pink-950/30 dark:via-orange-950/30 dark:to-yellow-950/30"
+        >
+        </div>
+        <div
+          class="absolute inset-0 opacity-15 dark:opacity-8"
+          style="background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(236, 72, 153, 0.1) 10px, rgba(236, 72, 153, 0.1) 20px);"
+        >
+        </div>
+      </div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    id="design"
+    title="3D Design Services"
+    subtitle="From concept to reality — we help you design and optimize your 3D models."
+    isReversed
+    items={[
+      {
+        title: 'Custom 3D Modeling',
+        description:
+          'We create custom 3D models based on your specifications, sketches, or concepts. Our design process ensures your model is optimized for 3D printing.',
+      },
+      {
+        title: 'Design Optimization',
+        description:
+          'We review and optimize existing 3D models for printability, reducing material usage, improving strength, and ensuring successful prints.',
+      },
+      {
+        title: 'File Preparation',
+        description:
+          'We prepare your files for printing, including orientation optimization, support structure planning, and slicing parameter recommendations.',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+      alt: '3D Design and Modeling Services',
+      width: 800,
+      height: 600,
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">Design Solutions</h2>
+      <p class="text-muted">
+        Don't have a 3D model yet? Our design services can help you create one from scratch or improve existing designs.
+        We work with you to ensure your design meets your requirements and is ready for printing.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 overflow-hidden">
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-indigo-50 via-blue-50 to-cyan-50 dark:from-indigo-950/30 dark:via-blue-950/30 dark:to-cyan-950/30"
+        >
+        </div>
+        <div
+          class="absolute inset-0 opacity-15 dark:opacity-8"
+          style="background-image: radial-gradient(circle at 1px 1px, rgba(99, 102, 241, 0.15) 1px, transparent 0); background-size: 40px 40px;"
+        >
+        </div>
+      </div>
+    </Fragment>
+  </Content>
+
+  <!-- Features3 Widget ************** -->
+
+  <Features3
+    title="Why Choose Us"
+    subtitle="Professional quality, reliable service, and competitive pricing."
+    columns={3}
+    defaultIcon="tabler:check"
+    items={[
+      {
+        title: 'Quality Assurance',
+        description: 'Every print is checked for quality and accuracy before delivery.',
+      },
+      {
+        title: 'Fast Turnaround',
+        description: 'Quick processing and printing times to meet your deadlines.',
+      },
+      {
+        title: 'Expert Consultation',
+        description: 'Free consultation on material selection and design optimization.',
+      },
+      {
+        title: 'Competitive Pricing',
+        description: 'Transparent pricing with no hidden fees.',
+      },
+      {
+        title: 'File Format Support',
+        description: 'We accept STL, OBJ, STEP, and other common 3D file formats.',
+      },
+      {
+        title: 'Post-Processing Options',
+        description: 'Additional finishing services available upon request.',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 overflow-hidden">
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-cyan-50 via-blue-50 to-indigo-50 dark:from-cyan-950/30 dark:via-blue-950/30 dark:to-indigo-950/30"
+        >
+        </div>
+        <div
+          class="absolute inset-0 opacity-15 dark:opacity-8"
+          style="background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(59, 130, 246, 0.1) 2px, rgba(59, 130, 246, 0.1) 4px);"
+        >
+        </div>
+      </div>
+    </Fragment>
+  </Features3>
+
+  <!-- Products Showcase Widget ******************* -->
+
+  <WidgetWrapper id="products" containerClass="!max-w-full !px-0">
+    <Fragment slot="bg">
+      <div class="absolute inset-0 overflow-hidden">
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 dark:from-purple-950/30 dark:via-pink-950/30 dark:to-rose-950/30"
+        >
+        </div>
+        <div
+          class="absolute inset-0 opacity-15 dark:opacity-8"
+          style="background-image: radial-gradient(circle at 2px 2px, rgba(236, 72, 153, 0.15) 1px, transparent 0); background-size: 45px 45px;"
+        >
+        </div>
+      </div>
+    </Fragment>
+    <div class="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-16 lg:py-20">
+      <Headline
+        title="Our Products"
+        subtitle="Check out some of the 3D printed products we've created for our clients."
+        classes={{
+          container: 'text-center mb-8',
+          title: 'text-4xl md:text-5xl font-bold tracking-tighter mb-4 font-heading',
+          subtitle: 'max-w-3xl mx-auto text-xl text-muted dark:text-slate-400',
+        }}
+      />
+
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4">Product Gallery</h2>
+      <p class="text-muted mb-6">
+        Browse through our portfolio of 3D printed products. Each item showcases our quality, attention to detail, and
+        versatility in working with different materials.
+      </p>
+    </div>
+
+    <!-- Image Gallery - Full Width -->
+    <div class="w-full px-4 md:px-8 mb-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Product Image 1 -->
+          <div
+            class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer"
+            data-image-src={foxMaskUrl}
+            data-image-alt="3D Printed Product - Fox Mask"
+          >
+            <Image
+              src="~/assets/images/fox_mask.jpg"
+              alt="3D Printed Product - Fox Mask"
+              class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+              width={400}
+              height={256}
+              loading="lazy"
+              layout="cover"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300"
+            >
+            </div>
+          </div>
+
+          <!-- Product Image 2 -->
+          <div
+            class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer"
+            data-image-src={nomaiUrl}
+            data-image-alt="3D Printed Product - Nomai"
+          >
+            <Image
+              src="~/assets/images/nomai.jpg"
+              alt="3D Printed Product - Nomai"
+              class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+              width={400}
+              height={256}
+              loading="lazy"
+              layout="cover"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300"
+            >
+            </div>
+          </div>
+
+          <!-- Product Image 3 -->
+          <div
+            class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer"
+            data-image-src={nezukoUrl}
+            data-image-alt="3D Printed Product - Nezuko"
+          >
+            <Image
+              src="~/assets/images/nezuko.jpg"
+              alt="3D Printed Product - Nezuko"
+              class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+              width={400}
+              height={256}
+              loading="lazy"
+              layout="cover"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300"
+            >
+            </div>
+          </div>
+
+          <!-- Product Image 4 -->
+          <div
+            class="relative group overflow-hidden rounded-lg shadow-lg cursor-pointer"
+            data-image-src={ebichuUrl}
+            data-image-alt="3D Printed Product - Ebicu Keychain"
+          >
+            <Image
+              src="~/assets/images/ebichu.jpg"
+              alt="3D Printed Product - Ebichu"
+              class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+              width={400}
+              height={256}
+              loading="lazy"
+              layout="cover"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300"
+            >
+            </div>
+          </div>
+
+          <!-- Product Image 5 - Katana (Spans 3 columns) -->
+          <div
+            class="relative group overflow-hidden rounded-lg shadow-lg md:col-span-2 lg:col-span-3 cursor-pointer"
+            data-image-src={katanaUrl}
+            data-image-alt="3D Printed Product - Katana"
+          >
+            <Image
+              src="~/assets/images/katana.jpg"
+              alt="3D Printed Product - Katana"
+              class="w-full h-64 md:h-80 lg:h-96 object-cover transition-transform duration-300 group-hover:scale-110"
+              width={1200}
+              height={384}
+              loading="lazy"
+              layout="cover"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300"
+            >
+            </div>
+          </div>
+
+          <!-- Add more product images as needed -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Video Gallery - Full Width -->
+    <div class="w-full px-4 md:px-8 mt-8">
+      <div class="max-w-7xl mx-auto">
+        <h3 class="text-xl font-bold tracking-tight dark:text-white sm:text-2xl mb-4">Product Videos</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Product Video 1 -->
+          <div class="relative w-full" style="padding-bottom: 56.25%">
+            <iframe
+              src="https://drive.google.com/file/d/1pJxeu2yBoznVxHS2_lYmNTQoCj-icuyv/preview"
+              class="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
+              allow="autoplay"
+              allowfullscreen></iframe>
+          </div>
+
+          <!-- Product Video 2 -->
+          <div class="relative w-full" style="padding-bottom: 56.25%">
+            <iframe
+              src="https://drive.google.com/file/d/1YRDGdZ5V1A5ae_s2M4jBGiPYqJifFeln/preview"
+              class="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
+              allow="autoplay"
+              allowfullscreen></iframe>
+          </div>
+
+          <!-- Add more product videos as needed -->
+        </div>
+      </div>
+    </div>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </WidgetWrapper>
+
+  <!-- Image Lightbox Modal -->
+  <div
+    id="image-lightbox"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-90 backdrop-blur-sm"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="lightbox-image-alt"
+  >
+    <button
+      id="lightbox-close"
+      class="absolute top-4 right-4 z-10 rounded-full bg-white/10 p-2 text-white hover:bg-white/20 transition-colors"
+      aria-label="Close lightbox"
+    >
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+    <div class="relative max-h-[90vh] max-w-[90vw] p-4">
+      <img id="lightbox-image" src="" alt="" class="max-h-[90vh] max-w-full rounded-lg object-contain" />
+    </div>
+  </div>
+
+  <script>
+    // Lightbox functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const lightbox = document.getElementById('image-lightbox');
+      const lightboxImage = document.getElementById('lightbox-image') as HTMLImageElement | null;
+      const lightboxClose = document.getElementById('lightbox-close');
+      const imageContainers = document.querySelectorAll('[data-image-src]');
+
+      if (!lightbox || !lightboxImage) return;
+
+      // Open lightbox when image is clicked
+      imageContainers.forEach((container) => {
+        container.addEventListener('click', (e) => {
+          e.preventDefault();
+          const imgSrc = container.getAttribute('data-image-src');
+          const imgAlt = container.getAttribute('data-image-alt') || 'Product image';
+
+          if (imgSrc && lightboxImage) {
+            lightboxImage.src = imgSrc;
+            lightboxImage.alt = imgAlt;
+            lightboxImage.id = 'lightbox-image-alt';
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+      });
+
+      // Close lightbox functions
+      const closeLightbox = () => {
+        if (!lightbox || !lightboxImage) return;
+        lightbox.classList.add('hidden');
+        lightbox.classList.remove('flex');
+        document.body.style.overflow = '';
+        lightboxImage.src = '';
+      };
+
+      lightboxClose?.addEventListener('click', closeLightbox);
+
+      // Close on background click
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      // Close on ESC key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+          closeLightbox();
+        }
+      });
+    });
+  </script>
+
+  <!-- FAQs Widget ******************* -->
+
+  <FAQs
+    title="Frequently Asked Questions"
+    items={[
+      {
+        title: 'What file formats do you accept?',
+        description:
+          'We accept common 3D file formats including STL, OBJ, STEP, 3MF, and others. If you have a different format, please contact us and we can discuss compatibility.',
+      },
+      {
+        title: 'What materials are available?',
+        description:
+          'We currently offer printing services in ABS, PLA, PETG, and TPU. Each material has different properties suited for various applications. ABS offers strength and heat resistance, PLA is easy to print and eco-friendly, PETG combines ease of printing with durability, and TPU provides flexible, rubber-like properties. Contact us to discuss which material is best for your project.',
+      },
+      {
+        title: 'How do I get a quote?',
+        description:
+          'Simply contact us through our contact page with your 3D file, desired material, quantity, and any special requirements. We will provide a detailed quote within 24-48 hours.',
+      },
+      {
+        title: 'Do you provide 3D design services?',
+        description:
+          'Yes! We offer custom 3D modeling and design services. Whether you have a sketch, concept, or need optimization of an existing design, we can help bring your ideas to life.',
+      },
+      {
+        title: 'What is the typical turnaround time?',
+        description:
+          'Turnaround time depends on the complexity and size of your project. Simple prints can be completed in 1-3 days, while larger or more complex projects may take 5-7 days. Rush orders may be available upon request.',
+      },
+      {
+        title: 'Do you offer post-processing services?',
+        description:
+          'Yes, we offer various post-processing options including sanding, painting, assembly, and other finishing services. Please mention your requirements when requesting a quote.',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 overflow-hidden">
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-orange-50 via-yellow-50 to-amber-50 dark:from-orange-950/30 dark:via-yellow-950/30 dark:to-amber-950/30"
+        >
+        </div>
+        <div
+          class="absolute inset-0 opacity-15 dark:opacity-8"
+          style="background-image: linear-gradient(135deg, rgba(251, 146, 60, 0.1) 25%, transparent 25%), linear-gradient(225deg, rgba(251, 146, 60, 0.1) 25%, transparent 25%); background-size: 35px 35px;"
+        >
+        </div>
+      </div>
+    </Fragment>
+  </FAQs>
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    title="Ready to Start Your Project?"
+    subtitle="Get in touch today for a free quote and consultation on your 3D printing or design needs."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Request a Quote',
+        href: getPermalink('/contact#form'),
+      },
+      {
+        variant: 'secondary',
+        text: 'Learn More',
+        href: '#services',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 overflow-hidden">
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-blue-400/10 via-purple-500/10 via-pink-500/10 to-orange-400/10 dark:from-blue-900/20 dark:via-purple-900/20 dark:via-pink-900/20 dark:to-orange-900/20"
+        >
+        </div>
+        <div
+          class="absolute inset-0 opacity-10 dark:opacity-5"
+          style="background-image: radial-gradient(circle at 3px 3px, rgba(99, 102, 241, 0.2) 1px, transparent 0); background-size: 55px 55px;"
+        >
+        </div>
+      </div>
+    </Fragment>
+  </CallToAction>
+</Layout>
