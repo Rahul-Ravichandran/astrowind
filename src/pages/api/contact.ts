@@ -22,7 +22,7 @@ export const POST: APIRoute = async ({ request }) => {
         }
 
         // Email configuration
-        const recipientEmail = 'hobby3dprints2025@gmail.com';
+        const recipientEmail = 'rahulr4121996@gmail.com';
         const subject = `New Quote Request from ${name}`;
 
         // Format email body
