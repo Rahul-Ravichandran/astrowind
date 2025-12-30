@@ -1,0 +1,127 @@
+---
+// Reusable Lightbox component
+// Handles lightbox functionality for images with data-image-src or .content-image-wrapper
+---
+
+<script is:inline>
+  // Lightbox functionality - reusable for all pages
+  function initLightbox() {
+    const lightbox = document.getElementById('image-lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxClose = document.getElementById('lightbox-close');
+
+    if (!lightbox || !lightboxImage) return;
+
+    // Find all image containers that should open lightbox
+    // 1. Elements with data-image-src attribute (like 3d-printing gallery)
+    const dataImageContainers = document.querySelectorAll('[data-image-src]');
+    
+    // 2. Elements with .content-image-wrapper class (Content widget images)
+    const contentImageWrappers = document.querySelectorAll('.content-image-wrapper');
+
+    // Setup click handlers for data-image-src containers
+    dataImageContainers.forEach((container) => {
+      // Skip if already set up
+      if (container.dataset.lightboxSetup === 'true') return;
+      container.dataset.lightboxSetup = 'true';
+
+      container.addEventListener('click', (e) => {
+        e.preventDefault();
+        const imgSrc = container.getAttribute('data-image-src');
+        const imgAlt = container.getAttribute('data-image-alt') || 'Image';
+
+        if (imgSrc && lightboxImage) {
+          lightboxImage.src = imgSrc;
+          lightboxImage.alt = imgAlt;
+          lightboxImage.id = 'lightbox-image-alt';
+          lightbox.classList.remove('hidden');
+          lightbox.classList.add('flex');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+
+    // Setup click handlers for content-image-wrapper containers
+    contentImageWrappers.forEach((wrapper) => {
+      // Skip if already set up
+      if (wrapper.dataset.lightboxSetup === 'true') return;
+      wrapper.dataset.lightboxSetup = 'true';
+
+      const img = wrapper.querySelector('img');
+      if (!img) return;
+
+      // Get image source
+      const imgSrc = img.src || img.getAttribute('src');
+      const imgAlt = img.alt || 'Image';
+
+      if (!imgSrc) return;
+
+      // Add data attributes if not already present
+      if (!wrapper.getAttribute('data-image-src')) {
+        wrapper.setAttribute('data-image-src', imgSrc.split('?')[0]);
+        wrapper.setAttribute('data-image-alt', imgAlt);
+      }
+
+      wrapper.addEventListener('click', (e) => {
+        e.preventDefault();
+        const src = wrapper.getAttribute('data-image-src');
+        const alt = wrapper.getAttribute('data-image-alt') || 'Image';
+
+        if (src && lightboxImage) {
+          lightboxImage.src = src;
+          lightboxImage.alt = alt;
+          lightboxImage.id = 'lightbox-image-alt';
+          lightbox.classList.remove('hidden');
+          lightbox.classList.add('flex');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+
+    // Close lightbox function
+    const closeLightbox = () => {
+      if (!lightbox || !lightboxImage) return;
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
+      document.body.style.overflow = '';
+      lightboxImage.src = '';
+    };
+
+    // Setup close handlers (only once)
+    if (lightboxClose && !lightboxClose.dataset.handlerSetup) {
+      lightboxClose.dataset.handlerSetup = 'true';
+      lightboxClose.onclick = closeLightbox;
+    }
+
+    // Close on background click (only setup once)
+    if (!lightbox.dataset.handlerSetup) {
+      lightbox.dataset.handlerSetup = 'true';
+      lightbox.onclick = (e) => {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      };
+    }
+
+    // Close on ESC key (only setup once)
+    if (!document.lightboxEscHandler) {
+      document.lightboxEscHandler = true;
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+          closeLightbox();
+        }
+      });
+    }
+  }
+
+  // Initialize when page loads
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLightbox);
+  } else {
+    initLightbox();
+  }
+
+  // Re-initialize on navigation (for client-side routing)
+  document.addEventListener('astro:page-load', initLightbox);
+</script>
+

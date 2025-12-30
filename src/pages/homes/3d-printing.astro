@@ -11,6 +11,7 @@ import FAQs from '~/components/widgets/FAQs.astro';
 import Image from '~/components/common/Image.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import Headline from '~/components/ui/Headline.astro';
+import Lightbox from '~/components/common/Lightbox.astro';
 import { getPermalink } from '~/utils/permalinks';
 import { findImage } from '~/utils/images';
 
@@ -520,6 +521,7 @@ const metadata = {
               height={384}
               loading="lazy"
               layout="cover"
+              style="image-orientation: from-image;"
             />
             <div
               class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300"
@@ -587,60 +589,7 @@ const metadata = {
     </div>
   </div>
 
-  <script>
-    // Lightbox functionality
-    document.addEventListener('DOMContentLoaded', () => {
-      const lightbox = document.getElementById('image-lightbox');
-      const lightboxImage = document.getElementById('lightbox-image') as HTMLImageElement | null;
-      const lightboxClose = document.getElementById('lightbox-close');
-      const imageContainers = document.querySelectorAll('[data-image-src]');
-
-      if (!lightbox || !lightboxImage) return;
-
-      // Open lightbox when image is clicked
-      imageContainers.forEach((container) => {
-        container.addEventListener('click', (e) => {
-          e.preventDefault();
-          const imgSrc = container.getAttribute('data-image-src');
-          const imgAlt = container.getAttribute('data-image-alt') || 'Product image';
-
-          if (imgSrc && lightboxImage) {
-            lightboxImage.src = imgSrc;
-            lightboxImage.alt = imgAlt;
-            lightboxImage.id = 'lightbox-image-alt';
-            lightbox.classList.remove('hidden');
-            lightbox.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-          }
-        });
-      });
-
-      // Close lightbox functions
-      const closeLightbox = () => {
-        if (!lightbox || !lightboxImage) return;
-        lightbox.classList.add('hidden');
-        lightbox.classList.remove('flex');
-        document.body.style.overflow = '';
-        lightboxImage.src = '';
-      };
-
-      lightboxClose?.addEventListener('click', closeLightbox);
-
-      // Close on background click
-      lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) {
-          closeLightbox();
-        }
-      });
-
-      // Close on ESC key
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
-          closeLightbox();
-        }
-      });
-    });
-  </script>
+  <Lightbox />
 
   <!-- FAQs Widget ******************* -->
 
