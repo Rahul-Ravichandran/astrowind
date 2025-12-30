@@ -308,13 +308,52 @@ const metadata = {
     ]}
   />
 
-  <!-- Content Widget **************** -->
+  <!-- Content Widget Drawing robot -->
 
   <Content
     id="porfolio"
     title="Robotics Projects & Solutions"
     subtitle="Explore my portfolio of robotics projects, from autonomous systems to industrial automation solutions. Each project demonstrates expertise in software integration, hardware design, and system deployment."
     isReversed
+    items={[
+      {
+        title: 'Description:',
+        description:
+          'Developed a drawing robot capable of creating intricate designs on paper using pen plotter mechanisms. The robot utilizes stepper motors for precise movement and an embedded microcontroller for control and coordination of drawing tasks.',
+      },
+      {
+        title: 'Key Achievements:',
+        description:
+          'Designed the chasis in Fusion 360, designed the PCB in Altium and programmed the microcontroller in embedded C to control the drawing robot. Integrated motor control systems for precise movement and drawing execution.',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/drawing_robot.jpg',
+      alt: 'Drawing robot',
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'Learn more',
+      icon: 'tabler:chevron-right',
+      href: 'https://www.linkedin.com/in/rahul-ravichandran-b89363129/',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Project 1: <br /><span class="text-2xl">Drawing robot</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget turftank project -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
     items={[
       {
         title: 'Description:',
@@ -340,7 +379,7 @@ const metadata = {
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 1: <br /><span class="text-2xl">Autonomous Field Marking Robot System</span>
+        Project 2: <br /><span class="text-2xl">Autonomous Field Marking Robot System</span>
       </h3>
     </Fragment>
 
@@ -379,7 +418,7 @@ const metadata = {
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 2: <br /><span class="text-2xl">Drone-based 3D Area Localization & Mapping</span>
+        Project 3: <br /><span class="text-2xl">Drone-based 3D Area Localization & Mapping</span>
       </h3>
     </Fragment>
 
@@ -406,7 +445,7 @@ const metadata = {
       },
     ]}
     image={{
-      src: '~/assets/images/lh8_robot.png',
+      src: '~/assets/images/lh8.jpg',
       alt: 'Little Helper 8 Robot',
     }}
     callToAction={{
@@ -418,7 +457,7 @@ const metadata = {
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 3: <br /><span class="text-2xl">Little Helper 8 — Collaborative Mobile Robot Platform</span>
+        Project 4: <br /><span class="text-2xl">Little Helper 8 — Collaborative Mobile Robot Platform</span>
       </h3>
     </Fragment>
 
@@ -456,7 +495,7 @@ const metadata = {
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 4: <br /><span class="text-2xl">Custom Multicore Processor Drone System</span>
+        Project 5: <br /><span class="text-2xl">Custom Multicore Processor Drone System</span>
       </h3>
     </Fragment>
 
@@ -493,7 +532,7 @@ const metadata = {
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 5: <br /><span class="text-2xl">MBZIRC International Robotics Challenge</span>
+        Project 6: <br /><span class="text-2xl">MBZIRC International Robotics Challenge</span>
       </h3>
     </Fragment>
 
@@ -530,7 +569,7 @@ const metadata = {
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 6: <br /><span class="text-2xl">Swarm Robotics Navigation & Coordination</span>
+        Project 7: <br /><span class="text-2xl">Swarm Robotics Navigation & Coordination</span>
       </h3>
     </Fragment>
 
@@ -567,7 +606,7 @@ const metadata = {
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 7: <br /><span class="text-2xl">UAV-Based Survivor Search During Floods</span>
+        Project 8: <br /><span class="text-2xl">UAV-Based Survivor Search During Floods</span>
       </h3>
     </Fragment>
 
@@ -606,7 +645,7 @@ const metadata = {
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 8: <br /><span class="text-2xl">IMU-Based Biped Robot Joint Angle Sensing</span>
+        Project 9: <br /><span class="text-2xl">IMU-Based Biped Robot Joint Angle Sensing</span>
       </h3>
     </Fragment>
 
@@ -643,7 +682,7 @@ const metadata = {
   >
     <Fragment slot="content">
       <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 9: <br /><span class="text-2xl">ABU Robocon Competition</span>
+        Project 10: <br /><span class="text-2xl">ABU Robocon Competition</span>
       </h3>
     </Fragment>
 
