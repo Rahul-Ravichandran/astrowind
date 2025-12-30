@@ -10,6 +10,45 @@ import Testimonials from '~/components/widgets/Testimonials.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import { getPermalink } from '~/utils/permalinks';
+import { findImage } from '~/utils/images';
+
+// Import images for lightbox
+import personalPhotoImg from '~/assets/images/personal_photo.jpg';
+import drawingRobotImg from '~/assets/images/drawing_robot.jpg';
+import turftankRobotImg from '~/assets/images/turftank_robot.jpg';
+import area3dImg from '~/assets/images/3d_area.png';
+import lh8Img from '~/assets/images/lh8.jpg';
+import mbzircImg from '~/assets/images/MBZIRC_gazebo.png';
+import swarmOpsImg from '~/assets/images/swarm_ops.png';
+import probSearchImg from '~/assets/images/prob_search.png';
+import bipedImg from '~/assets/images/biped.png';
+import roboconImg from '~/assets/images/robocon.jpg';
+
+// Get image URLs for lightbox
+const personalPhotoUrl = typeof personalPhotoImg === 'string' ? personalPhotoImg : personalPhotoImg.src;
+const drawingRobotUrl = typeof drawingRobotImg === 'string' ? drawingRobotImg : drawingRobotImg.src;
+const turftankRobotUrl = typeof turftankRobotImg === 'string' ? turftankRobotImg : turftankRobotImg.src;
+const area3dUrl = typeof area3dImg === 'string' ? area3dImg : area3dImg.src;
+const lh8Url = typeof lh8Img === 'string' ? lh8Img : lh8Img.src;
+const mbzircUrl = typeof mbzircImg === 'string' ? mbzircImg : mbzircImg.src;
+const swarmOpsUrl = typeof swarmOpsImg === 'string' ? swarmOpsImg : swarmOpsImg.src;
+const probSearchUrl = typeof probSearchImg === 'string' ? probSearchImg : probSearchImg.src;
+const bipedUrl = typeof bipedImg === 'string' ? bipedImg : bipedImg.src;
+const roboconUrl = typeof roboconImg === 'string' ? roboconImg : roboconImg.src;
+
+// Map image paths to full-size URLs for lightbox
+const imageUrlMap: Record<string, string> = {
+  'personal_photo.jpg': personalPhotoUrl,
+  'drawing_robot.jpg': drawingRobotUrl,
+  'turftank_robot.jpg': turftankRobotUrl,
+  '3d_area.png': area3dUrl,
+  'lh8.jpg': lh8Url,
+  'MBZIRC_gazebo.png': mbzircUrl,
+  'swarm_ops.png': swarmOpsUrl,
+  'prob_search.png': probSearchUrl,
+  'biped.png': bipedUrl,
+  'robocon.jpg': roboconUrl,
+};
 
 const metadata = {
   title: 'Rahul Ravichandran — Robotics Engineer',
@@ -711,4 +750,114 @@ const metadata = {
       },
     ]}
   />
+
+  <!-- Image Lightbox Modal -->
+  <div
+    id="image-lightbox"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black bg-opacity-90 backdrop-blur-sm"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="lightbox-image-alt"
+  >
+    <button
+      id="lightbox-close"
+      class="absolute top-4 right-4 z-10 rounded-full bg-white/10 p-2 text-white hover:bg-white/20 transition-colors"
+      aria-label="Close lightbox"
+    >
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+    <div class="relative max-h-[90vh] max-w-[90vw] p-4">
+      <img id="lightbox-image" src="" alt="" class="max-h-[90vh] max-w-full rounded-lg object-contain" />
+    </div>
+  </div>
+
+  <script define:vars={{ imageUrlMap }}>
+    // Lightbox functionality for project images
+    document.addEventListener('DOMContentLoaded', () => {
+      const lightbox = document.getElementById('image-lightbox');
+      const lightboxImage = document.getElementById('lightbox-image');
+      const lightboxClose = document.getElementById('lightbox-close');
+
+      if (!lightbox || !lightboxImage) return;
+
+      // Find all images in Content widgets and make them clickable
+      // Target images within sections that contain Content widgets
+      const contentSections = document.querySelectorAll('section');
+      const contentImages = [];
+
+      contentSections.forEach((section) => {
+        const images = section.querySelectorAll('img');
+        images.forEach((img) => {
+          // Skip if already in lightbox or is a testimonial image
+          if (img.closest('#image-lightbox') || img.closest('[class*="testimonial"]')) return;
+          contentImages.push(img);
+        });
+      });
+
+      contentImages.forEach((htmlImg) => {
+        // Make image clickable
+        htmlImg.style.cursor = 'pointer';
+        htmlImg.classList.add('hover:opacity-90', 'transition-opacity');
+
+        htmlImg.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+
+          // Get the current image src
+          let imgSrc = htmlImg.src;
+          const imgAlt = htmlImg.alt || 'Project image';
+
+          // Try to find full-size version in the map
+          // Extract filename from src
+          const srcMatch = imgSrc.match(/\/([^\/]+\.(jpg|jpeg|png|gif|webp))$/i);
+          if (srcMatch) {
+            const filename = srcMatch[1];
+            // Check if we have a mapped URL for this image
+            if (imageUrlMap[filename]) {
+              imgSrc = imageUrlMap[filename];
+            }
+          }
+
+          // For external images (like LinkedIn), use the current src directly
+          if (imgSrc.startsWith('http://') || imgSrc.startsWith('https://')) {
+            // Use the current src directly for external images
+          }
+
+          lightboxImage.src = imgSrc;
+          lightboxImage.alt = imgAlt;
+          lightboxImage.id = 'lightbox-image-alt';
+          lightbox.classList.remove('hidden');
+          lightbox.classList.add('flex');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      // Close lightbox functions
+      const closeLightbox = () => {
+        if (!lightbox || !lightboxImage) return;
+        lightbox.classList.add('hidden');
+        lightbox.classList.remove('flex');
+        document.body.style.overflow = '';
+        lightboxImage.src = '';
+      };
+
+      lightboxClose?.addEventListener('click', closeLightbox);
+
+      // Close on background click
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      // Close on ESC key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+          closeLightbox();
+        }
+      });
+    });
+  </script>
 </Layout>
