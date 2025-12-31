@@ -39,18 +39,41 @@ const {
 
               <div class="flex items-center">
                 {image && (
-                  <div class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600">
+                  <div class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600 overflow-hidden">
                     {typeof image === 'string' ? (
                       <Fragment set:html={image} />
                     ) : (
-                      <Image
-                        class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600 min-w-full min-h-full"
-                        width={40}
-                        height={40}
-                        widths={[400, 768]}
-                        layout="fixed"
-                        {...image}
-                      />
+                      (() => {
+                        const imageObj = image as { src?: string; alt?: string };
+                        const imageSrc = imageObj?.src || '';
+                        const imageAlt = imageObj?.alt || '';
+                        // Use regular img tag for external URLs to avoid optimization issues
+                        if (imageSrc && (imageSrc.startsWith('http://') || imageSrc.startsWith('https://'))) {
+                          return (
+                            <img
+                              src={imageSrc}
+                              alt={imageAlt}
+                              class="h-10 w-10 rounded-full object-cover min-w-full min-h-full"
+                              width={40}
+                              height={40}
+                              loading="lazy"
+                              crossorigin="anonymous"
+                              referrerpolicy="no-referrer"
+                            />
+                          );
+                        }
+                        // Use Image component for local images
+                        return (
+                          <Image
+                            class="h-10 w-10 rounded-full border border-slate-200 dark:border-slate-600 min-w-full min-h-full"
+                            width={40}
+                            height={40}
+                            widths={[400, 768]}
+                            layout="fixed"
+                            {...imageObj}
+                          />
+                        );
+                      })()
                     )}
                   </div>
                 )}

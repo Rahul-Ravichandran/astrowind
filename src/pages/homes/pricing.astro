@@ -31,7 +31,7 @@ const metadata = {
       actions={[
         {
           text: 'Get Quote',
-          href: getPermalink('/contact#form'),
+          href: getPermalink('/homes/pricing#contact-quote'),
         },
       ]}
       isSticky
@@ -47,7 +47,7 @@ const metadata = {
     title="Pricing & Payment"
     tagline="Flexible Pricing for Your Projects"
     actions={[
-      { variant: 'primary', text: 'Request a Quote', href: getPermalink('/contact#form') },
+      { variant: 'primary', text: 'Request a Quote', href: getPermalink('/homes/pricing#contact-quote') },
       { variant: 'secondary', text: 'View Services', href: getPermalink('/homes/3d-printing#services') },
     ]}
   >
@@ -210,7 +210,7 @@ const metadata = {
     <div
       class="max-w-2xl mx-auto rounded-lg backdrop-blur border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow-lg p-6 sm:p-8 lg:p-10"
     >
-      <form id="quote-form" class="space-y-6">
+      <form id="quote-form" action="https://formspree.io/f/xlgeqvqk" method="POST" class="space-y-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label for="name" class="block text-sm font-medium mb-2">
@@ -334,79 +334,22 @@ const metadata = {
     </Fragment>
   </WidgetWrapper>
 
-  <script>
+  <script is:inline>
     document.addEventListener('DOMContentLoaded', () => {
-      const form = document.getElementById('quote-form') as HTMLFormElement;
+      const form = document.getElementById('quote-form');
       const messageDiv = document.getElementById('form-message');
+      const submitButton = form?.querySelector('button[type="submit"]');
 
-      if (!form || !messageDiv) return;
+      if (!form || !messageDiv || !submitButton) return;
 
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      // Show loading state when form is submitted
+      form.addEventListener('submit', () => {
         const originalText = submitButton.textContent;
         submitButton.disabled = true;
         submitButton.textContent = 'Sending...';
 
-        messageDiv.classList.add('hidden');
-        messageDiv.classList.remove(
-          'bg-green-50',
-          'text-green-800',
-          'border-green-200',
-          'bg-red-50',
-          'text-red-800',
-          'border-red-200'
-        );
-
-        try {
-          const formData = new FormData(form);
-
-          const response = await fetch('/api/contact', {
-            method: 'POST',
-            body: formData,
-          });
-
-          const data = await response.json();
-
-          if (response.ok) {
-            messageDiv.classList.add(
-              'bg-green-50',
-              'text-green-800',
-              'border',
-              'border-green-200',
-              'dark:bg-green-900/20',
-              'dark:text-green-400',
-              'dark:border-green-800'
-            );
-            messageDiv.textContent =
-              data.message ||
-              'Thank you! Your quote request has been submitted. We will get back to you within 24-48 hours.';
-            messageDiv.classList.remove('hidden');
-            form.reset();
-
-            // If mailto link is provided, you could optionally open it
-            // window.location.href = data.mailtoLink;
-          } else {
-            throw new Error(data.error || 'Failed to submit form');
-          }
-        } catch (error) {
-          messageDiv.classList.add(
-            'bg-red-50',
-            'text-red-800',
-            'border',
-            'border-red-200',
-            'dark:bg-red-900/20',
-            'dark:text-red-400',
-            'dark:border-red-800'
-          );
-          messageDiv.textContent =
-            error instanceof Error ? error.message : 'An error occurred. Please try again or contact us directly.';
-          messageDiv.classList.remove('hidden');
-        } finally {
-          submitButton.disabled = false;
-          submitButton.textContent = originalText || 'Submit Quote Request';
-        }
+        // Formspree will handle the submission and redirect
+        // This just provides visual feedback
       });
     });
   </script>
@@ -472,12 +415,12 @@ const metadata = {
       {
         variant: 'primary',
         text: 'Request a Quote',
-        href: getPermalink('/contact#form'),
+        href: getPermalink('/homes/pricing#contact-quote'),
       },
       {
         variant: 'secondary',
         text: 'Call Us',
-        href: 'tel:+4550249446',
+        href: getPermalink('/contact#form')
       },
     ]}
   >
