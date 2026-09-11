@@ -7,3 +7,8 @@
   for = "/_astro/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+[[plugins]]
+package = '@netlify/plugin-sitemap'
+
+[plugins.inputs]
+buildDir = "dist" # Change this to match your build output folder (e.g., "public", "build", or ".")
